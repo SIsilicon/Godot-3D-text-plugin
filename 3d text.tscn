@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/SIsilicon.3d.text/label_3d.gd" type="Script" id=1]
+[ext_resource path="res://addons/SIsilicon.3d.text/icon_label_3d.svg" type="Texture" id=2]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 40, 40 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.34902, 0.639216, 0.2, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Ground" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.710942, 0.70325, 0, -0.70325, 0.710942, 0, 12.4077, 12.5434 )
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_depth_range = 1
+
+[node name="Label3D" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05194, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+text = "Hello!
+This is my 3D text plugin."
+extrude = 0.1
+align = 2
