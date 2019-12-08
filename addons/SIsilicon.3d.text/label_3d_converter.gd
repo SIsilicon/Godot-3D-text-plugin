@@ -384,7 +384,7 @@ func create_edge(edges, offset, p1x, p1y, p2x, p2y, dir):
 
 func get_pixel(image : Image, x : int, y : int):
 	if x < 1 || y < 1 || x > image.get_width()-1 || y > image.get_height()-1:
-		return 1
+		return 0
 	
 	var i = x + y * image.get_width()
 	if image_cache.size() > i and image_cache[i] != null:
