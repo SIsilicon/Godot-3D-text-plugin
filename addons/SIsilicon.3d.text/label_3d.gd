@@ -33,9 +33,9 @@ func _ready():
 	proxy.material_override = preload("label_3d.material").duplicate()
 	material = proxy.material_override
 	
-	var viewTexture = viewport.get_texture()
-	viewTexture.flags = Texture.FLAG_FILTER
-	material.set_shader_param("text", viewTexture)
+	var view_texture = viewport.get_texture()
+	view_texture.flags = Texture.FLAG_FILTER
+	material.set_shader_param("text", view_texture)
 	add_child(proxy)
 	
 	set_align(align)
@@ -101,7 +101,10 @@ func set_extrude(ext):
 func set_font(f):
 	font = f
 	if label:
-		label.add_font_override("font", font)
+		if font:
+			label.add_font_override("font", font)
+		else:
+			label.add_font_override("font", preload("default_font.tres"))
 		set_text(text)
 
 func set_align(al):
