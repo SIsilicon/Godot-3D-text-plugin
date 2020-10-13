@@ -1,6 +1,5 @@
 tool
 extends Spatial
-class_name Label3D
 
 export(String, MULTILINE) var text = "Text" setget set_text
 export(float) var text_scale = 0.01 setget set_text_scale
