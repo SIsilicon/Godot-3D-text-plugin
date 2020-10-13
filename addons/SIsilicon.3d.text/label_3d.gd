@@ -8,10 +8,10 @@ export(Font) var font setget set_font;
 
 export(int, "Left", "Right", "Center", "Fill") var align setget set_align
 
-export(Color) var color = Color(0.6, 0.6, 0.6) setget set_color
+export(Color) var color = Color(1.0, 1.0, 1.0) setget set_color
 export(Color) var emission_color = Color(1.0, 1.0, 1.0) setget set_emission_color
 export(float, 0, 1) var metallic = 0.0 setget set_metallic
-export(float, 0, 1) var roughness = 0.5 setget set_roughness
+export(float, 0, 1) var roughness = 1.0 setget set_roughness
 export(float, 0, 16) var emission = 0.0 setget set_emission
 
 export(int) var max_steps = 256 setget set_max_steps
