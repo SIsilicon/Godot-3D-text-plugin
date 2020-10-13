@@ -2,7 +2,7 @@ tool
 extends Spatial
 
 export(String, MULTILINE) var text = "Text" setget set_text
-export(float) var text_scale = 0.01 setget set_text_scale
+export(float) var text_scale = 1.0 setget set_text_scale
 export(float) var extrude = 0.0 setget set_extrude
 export(Font) var font setget set_font;
 
@@ -76,16 +76,16 @@ func set_text(string):
 		yield(get_tree(), "idle_frame")
 		viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
 		
-		proxy.scale.x = size.x * text_scale
-		proxy.scale.y = size.y * text_scale
+		proxy.scale.x = size.x * text_scale / 200.0
+		proxy.scale.y = size.y * text_scale / 200.0
 
 func set_text_scale(scale):
 	text_scale = scale
 	if label:
 		var size = label.rect_size
 		if proxy:
-			proxy.scale.x = size.x * text_scale
-			proxy.scale.y = size.y * text_scale
+			proxy.scale.x = size.x * text_scale / 200.0
+			proxy.scale.y = size.y * text_scale / 200.0
 
 func set_extrude(ext):
 	extrude = ext
