@@ -20,16 +20,10 @@ func _enter_tree():
 		add_control_to_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_MENU, converter_button)
 		converter_button.connect("mesh_generated", self, "generate_mesh")
 		converter_button.hide()
-	
-	print("3d text plugin added to project.")
-
 
 func _exit_tree():
 	remove_custom_type("Label3D")
 	remove_control_from_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_MENU, converter_button)
-	
-	print("3d text plugin removed from project.")
-
 
 func handles(object : Object) -> bool:
 	var handle = object is Label3D
@@ -39,7 +33,6 @@ func handles(object : Object) -> bool:
 	
 	return handle
 
-
 func edit(object):
 	edited_node = object
 	if edited_node is Label3D:
@@ -47,7 +40,6 @@ func edit(object):
 		converter_button.label3d = object
 	else:
 		converter_button.hide()
-
 
 func clear():
 	edited_node = null
