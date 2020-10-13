@@ -47,8 +47,10 @@ func _ready():
 	set_extrude(extrude)
 	
 	set_color(color)
+	set_emission_color(emission_color)
 	set_metallic(metallic)
 	set_roughness(roughness)
+	set_emission(emission)
 	
 	set_max_steps(max_steps)
 	set_step_size(step_size)
