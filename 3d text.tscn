@@ -8,6 +8,11 @@ size = Vector2( 40, 40 )
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.34902, 0.639216, 0.2, 1 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
 
 [node name="Spatial" type="Spatial"]
 
@@ -19,15 +24,24 @@ material/0 = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 0.710942, 0.70325, 0, -0.70325, 0.710942, 0, 12.4077, 12.5434 )
 shadow_enabled = true
 directional_shadow_mode = 0
-directional_shadow_depth_range = 1
+directional_shadow_max_distance = 50.0
 
 [node name="Label3D" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05194, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -0.197355, 1.90471, -0.0675241 )
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
 }
-text = "Hello!
-This is my 3D text plugin."
-extrude = 0.1
+text = "This is a test text.
+It's multiline too."
+text_size = 1.761
+font = null
 align = 2
+color = Color( 0.603922, 0.603922, 0.603922, 1 )
+metallic = 0.0
+roughness = 0.5
+emission_color = Color( 1, 1, 1, 1 )
+emission_strength = 0.0
+extrude = 0.1
+max_steps = 256
+step_size = 1.0

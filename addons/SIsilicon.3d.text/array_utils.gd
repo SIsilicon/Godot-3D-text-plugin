@@ -13,10 +13,6 @@ static func shift_array(array : Array, amount : int):
 			value = array.pop_front()
 			array.push_back(value)
 
-# Combines the array with the other array.
-static func append_array(array : Array, other : Array):
-	for i in other:
-		array.append(i)
 
 # Splits the array between a and b at index.
 static func split_array(array : Array, index : int, a : Array, b : Array):
@@ -32,16 +28,3 @@ static func to_dictionary(array : Array) -> Dictionary:
 	for i in array.size():
 		dict[i] = array[i]
 	return dict
-
-# Calls a function per object in the array with variable arguments.
-static func call_per_element(array : Array, function : String, vars = null):
-	match typeof(vars):
-		TYPE_NIL:
-			for e in array:
-				e.call(function)
-		TYPE_ARRAY:
-			for e in array:
-				e.callv(function, vars)
-		_:
-			for e in array:
-				e.call(function, vars)
