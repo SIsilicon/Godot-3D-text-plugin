@@ -7,16 +7,17 @@ The addon simply adds a new node called `Label3D` that you can add anywhere in y
 - `Text Size`: The size of the label. There's another property that determines the label's size.
 - `Font`: The kind of font the label will use. The font's size is what also affects the label's size.
 - `Align`: The alignment of the text.
+- `Billboard`: Whether the text should always face the camera.
 - `Color`: The color of the label.
-- `Metallic`: The metalness of the label.
-- `Roughness`: The roughness of the label.
-- `Emission Color`: The color the label emits.
+- `Metallic`: How metallic the label appears.
+- `Roughness`: How rough the label appears.
+- `Emission Color`: The color that the label emits.
 - `Emission Strength`: How strongly the label emits light.
 
 These last two parameters are only useful while the text is extruded.
 
 - `Extrude`: The thickness of the label. It gets rendered using a ray tracing illusion. More on that later.
-- `Max Steps`: How many steps the ray tracer takes before it just gives up. More steps, slower rendering. Less steps, more susceptible to cutoff of the extrusion rendering.
-- `Step Size`: How far apart each step the rays in the ray tracer takes. Larger step size, more aliasing artifacts.
+- `Min Steps`: The least amount of steps the ray tracer will take. More steps means higher quality, but less performance.
+- `Max Steps`: The most amount of steps the ray tracer will take.
 
 The disadvantage of using a ray tracer to render the extrusion is that it doesn't play well with lighting and shadows. If thats a bother to you, there is an option to convert the `Label3D` into a `MeshInstance`. :D Just select your label, and a button will appear in the viewport's menubar. just click, and your all good. Just be wary that the larger your label's font is, the longer it will take to convert.
