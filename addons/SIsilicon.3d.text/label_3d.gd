@@ -5,6 +5,7 @@ var text := "Text" setget set_text
 var text_size := 1.0 setget set_text_size
 var font: Font setget set_font
 var align := 0 setget set_align
+var billboard := false setget set_billboard
 
 var color := Color(0.6, 0.6, 0.6) setget set_color
 var metallic := 0.0 setget set_metallic
@@ -13,8 +14,8 @@ var emission_strength := 0.0 setget set_emission_strength
 var emission_color := Color(1.0, 1.0, 1.0) setget set_emission_color
 
 var extrude := 0.0 setget set_extrude
+var min_steps := 32 setget set_min_steps
 var max_steps := 256 setget set_max_steps
-var step_size := 1.0 setget set_step_size
 
 
 var label: Label
@@ -30,6 +31,7 @@ func _get_property_list() -> Array:
 		{name="text_size", type=TYPE_REAL},
 		{name="font", type=TYPE_OBJECT, hint=PROPERTY_HINT_RESOURCE_TYPE, hint_string="Font"},
 		{name="align", type=TYPE_INT, hint=PROPERTY_HINT_ENUM, hint_string="Left,Right,Center,Fill"},
+		{name="billboard", type=TYPE_BOOL},
 
 		{name="Material", type=TYPE_NIL, usage=PROPERTY_USAGE_GROUP},
 		{name="color", type=TYPE_COLOR, hint=PROPERTY_HINT_COLOR_NO_ALPHA},
@@ -40,8 +42,8 @@ func _get_property_list() -> Array:
 
 		{name="Extrusion", type=TYPE_NIL, usage=PROPERTY_USAGE_GROUP},
 		{name="extrude", type=TYPE_REAL},
+		{name="min_steps", type=TYPE_INT},
 		{name="max_steps", type=TYPE_INT},
-		{name="step_size", type=TYPE_REAL},
 	]
 	return properties
 
@@ -77,7 +79,7 @@ func _ready() -> void:
 
 	set_extrude(extrude)
 	set_max_steps(max_steps)
-	set_step_size(step_size)
+	set_min_steps(min_steps)
 
 
 func set_text(value: String) -> void:
@@ -156,6 +158,12 @@ func set_align(value: int) -> void:
 	set_text(text)
 
 
+func set_billboard(value: bool) -> void:
+	billboard = value
+	if material:
+		material.set_shader_param("billboard", billboard)
+
+
 func set_color(value: Color) -> void:
 	color = value
 	if material:
@@ -182,18 +190,17 @@ func set_emission_color(value: Color) -> void:
 
 func set_emission_strength(value: float) -> void:
 	emission_strength = value
-	print(emission_color * emission_strength)
 	if material:
 		material.set_shader_param("emission", emission_color * emission_strength)
 
 
 func set_max_steps(value: int) -> void:
-	max_steps = max(value, 8)
+	max_steps = clamp(value, min_steps, 1024)
 	if material:
-		material.set_shader_param("maxSteps", max_steps)
+		material.set_shader_param("max_steps", max_steps)
 
 
-func set_step_size(value: float) -> void:
-	step_size = max(value, 0.001)
+func set_min_steps(value: int) -> void:
+	min_steps = clamp(value, 8, max_steps)
 	if material:
-		material.set_shader_param("stepSize", step_size)
+		material.set_shader_param("min_steps", min_steps)

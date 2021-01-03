@@ -27,7 +27,7 @@ directional_shadow_mode = 0
 directional_shadow_max_distance = 50.0
 
 [node name="Label3D" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -0.197355, 1.90471, -0.0675241 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.197355, 1.90471, 0.137399 )
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
@@ -37,11 +37,12 @@ It's multiline too."
 text_size = 1.761
 font = null
 align = 2
+billboard = false
 color = Color( 0.603922, 0.603922, 0.603922, 1 )
 metallic = 0.0
 roughness = 0.5
 emission_color = Color( 1, 1, 1, 1 )
 emission_strength = 0.0
 extrude = 0.1
+min_steps = 32
 max_steps = 256
-step_size = 1.0
