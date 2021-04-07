@@ -76,6 +76,7 @@ func _ready() -> void:
 	set_roughness(roughness)
 	set_emission_color(emission_color)
 	set_emission_strength(emission_strength)
+	set_billboard(billboard)
 
 	set_extrude(extrude)
 	set_max_steps(max_steps)
